@@ -1,6 +1,6 @@
 import React from "react";
 import Cookies from "js-cookie";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 interface userData {
   name: string | any;
   images: string | any;
@@ -8,12 +8,14 @@ interface userData {
 }
 
 const DropDownUserMenu: React.FC<userData> = (props) => {
+  const navigate = useNavigate();
   const handleLogout = () => {
     Cookies.remove("status");
     Cookies.remove("token");
     Cookies.remove("userid");
     Cookies.remove("email");
-    window.open("http://localhost:4000/auth/logout", "_self");
+    navigate("/");
+    window.location.reload();
   };
   console.log(props.usersection);
   return (

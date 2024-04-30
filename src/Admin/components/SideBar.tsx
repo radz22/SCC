@@ -1,12 +1,14 @@
 import logo from "../../assets/logo.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const SideBar = () => {
+  const navigate = useNavigate();
   const handleLogout = () => {
     Cookies.remove("status");
     Cookies.remove("token");
-    window.open("https://sccbackend.onrender.com/auth/logout", "_self");
+    navigate("/");
+    window.location.reload();
   };
 
   return (
