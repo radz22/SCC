@@ -13,13 +13,29 @@ import Profile from "./Client/pages/Profile";
 import ResetPassword from "./Client/pages/ResetPassword";
 import ResetOtp from "./Client/pages/ResetOtp";
 import ResetPasswordLast from "./Client/pages/ResetPasswordLast";
+import Cookies from "js-cookie";
+
 const App = () => {
+  const usertype = Cookies.get("usertype");
   return (
     <>
       <BrowserRouter>
         <Routes>
           {/* Client Routes*/}
-          <Route path="/" element={<Home />} />
+
+          <Route
+            path="/"
+            element={
+              usertype === "client" || usertype === "admin" ? (
+                <>
+                  {usertype === "client" && <Home />}
+                  {usertype === "admin" && <DashBoard />}
+                </>
+              ) : (
+                <Home />
+              )
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/about" element={<About />} />
           <Route path="/edituser" element={<EditUser />} />

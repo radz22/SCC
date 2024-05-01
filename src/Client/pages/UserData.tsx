@@ -17,39 +17,22 @@ const UserData = () => {
   const [user, setUser] = useState<userData | null>();
 
   const fetchData = async () => {
-    try {
-      await axios
-        .get("https://sccbackend.onrender.com/auth/user", {
-          withCredentials: true,
-        })
-        .then((res: any) => {
-          Cookies.set("status", res.data.status, { expires: 1 });
-          setUser(res.data.data);
-          Cookies.set("userid", res.data.userid, { expires: 1 });
-          Cookies.set("email", res.data.email, { expires: 1 });
-        });
-    } catch {
-      console.log("waiting");
-    }
-  };
-
-  useEffect(() => {
-    setInterval(() => {
-      fetchData();
-    }, 1000);
-  }, []);
-
-  const token = Cookies.get("token");
-  useEffect(() => {
-    axios
+    await axios
       .post("https://sccbackend.onrender.com/UserRoutes/userdata", {
         token: token,
       })
       .then((res) => {
         setUser(res.data.data);
       });
-  }, []);
+  };
 
+  const token = Cookies.get("token");
+
+  useEffect(() => {
+    setInterval(() => {
+      fetchData();
+    }, 1000);
+  }, []);
   const handleDropDown = () => {
     setDropDown(!dropDown);
   };

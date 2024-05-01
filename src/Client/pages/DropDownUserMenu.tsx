@@ -14,6 +14,7 @@ const DropDownUserMenu: React.FC<userData> = (props) => {
     Cookies.remove("token");
     Cookies.remove("userid");
     Cookies.remove("email");
+    Cookies.remove("usertype");
     navigate("/");
     window.location.reload();
   };

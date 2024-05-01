@@ -18,7 +18,10 @@ const ResetPasswordLast = () => {
   const handleVerifyPassword = () => {
     setVerifyPassword(!verifyPassword);
   };
-
+  const deleteInfo = () => {
+    Cookies.remove("otpemail");
+    Cookies.remove("otpresetpassword");
+  };
   const handleReset = async () => {
     if (verifyingPassword == password) {
       axios
@@ -28,6 +31,7 @@ const ResetPasswordLast = () => {
         })
         .then(() => {
           navigate("/login");
+          deleteInfo();
         })
         .catch(() => {
           console.log("error");

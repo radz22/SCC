@@ -31,6 +31,8 @@ const Login = () => {
       );
       Cookies.set("userid", response.data.userid, { expires: 1 });
       Cookies.set("email", response.data.email, { expires: 1 });
+      Cookies.set("usertype", response.data.usertype, { expires: 1 });
+
       toast.success("sucess");
       if (response.data.usertype == "admin") {
         navigate("/dashboard");

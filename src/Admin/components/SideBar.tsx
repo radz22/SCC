@@ -7,6 +7,7 @@ const SideBar = () => {
   const handleLogout = () => {
     Cookies.remove("status");
     Cookies.remove("token");
+    Cookies.remove("usertype");
     navigate("/");
     window.location.reload();
   };
