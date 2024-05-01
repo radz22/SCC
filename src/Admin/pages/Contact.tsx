@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Chat from "../components/Chat";
 import ChatSideBar from "../components/ChatSideBar";
 
