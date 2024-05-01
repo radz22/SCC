@@ -8,6 +8,8 @@ const SideBar = () => {
     Cookies.remove("status");
     Cookies.remove("token");
     Cookies.remove("usertype");
+    Cookies.remove("chatid");
+
     navigate("/");
     window.location.reload();
   };
@@ -99,7 +101,9 @@ const SideBar = () => {
                   </svg>
                 </div>
                 <div>
-                  <h1 className="text-3xl	font-bold text-white">Contact</h1>
+                  <Link to="/contact">
+                    <h1 className="text-3xl	font-bold text-white">Contact</h1>
+                  </Link>
                 </div>
               </div>
               <hr className="bg-[#ffffffad] w-[80%]   ml-10 mt-2  border-2"></hr>

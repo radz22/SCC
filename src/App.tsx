@@ -14,6 +14,8 @@ import ResetPassword from "./Client/pages/ResetPassword";
 import ResetOtp from "./Client/pages/ResetOtp";
 import ResetPasswordLast from "./Client/pages/ResetPasswordLast";
 import Cookies from "js-cookie";
+import Contact from "./Admin/pages/Contact";
+import Chat from "./Admin/components/Chat";
 
 const App = () => {
   const usertype = Cookies.get("usertype");
@@ -51,6 +53,8 @@ const App = () => {
           {/* Admin Routes*/}
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/section" element={<Section />} />
+          <Route path="/contact" element={<Contact />} />
+          {/* <Route path="/chat" element={<Chat />} /> */}
         </Routes>
       </BrowserRouter>
     </>
