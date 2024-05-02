@@ -61,7 +61,7 @@ const Otp = () => {
     const otp = Cookies.get("otpsignup");
     if (getValue == otp) {
       try {
-        const response = await axios
+        await axios
           .post("https://sccbackend.onrender.com/UserRoutes/signup", {
             images: Cookies.get("images"),
             name: Cookies.get("name"),
