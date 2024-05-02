@@ -8,9 +8,11 @@ const ChatSideBar = () => {
 
   const [user, setUser] = useState<any[]>([]);
   const fetchData = async () => {
-    await axios.get("http://localhost:4000/UserRoutes/").then((res) => {
-      setUser(res.data);
-    });
+    await axios
+      .get("https://sccbackend.onrender.com/UserRoutes")
+      .then((res) => {
+        setUser(res.data);
+      });
   };
 
   useEffect(() => {
@@ -19,6 +21,7 @@ const ChatSideBar = () => {
     }, 1000);
   }, []);
 
+  console.log(user);
   const storeId = (id: string) => {
     Cookies.set("chatid", id, { expires: 1 });
   };
