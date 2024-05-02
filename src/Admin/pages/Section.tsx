@@ -41,9 +41,7 @@ const Section = () => {
         .then((res: any) => {
           setData(res.data);
         });
-    } catch {
-      console.log("waiting");
-    }
+    } catch {}
   };
 
   useEffect(() => {
@@ -92,37 +90,7 @@ const Section = () => {
           <div>
             <h1 className="text-2xl	 font-bold gap-20">Pending Section</h1>
           </div>
-          {/* <div className="flex items-center justify-center">
-            <div>
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="rounded-full outline-none  font-bold p-2 w-96	 mt-2 mr-1   shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset]"
-              />
-            </div>
-          </div> */}
-          {/* <div className="mt-2">
-            <select
-              className="w-fit py-4 px-4	text-center text-lg	 rounded-md	 font-semibold cursor-pointer	"
-              value={dropDown}
-              onChange={(e) => setDropDown(e.target.value)}
-            >
-              <option value="">Select an Course</option>
-              {uniqueNames.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div> */}
         </div>
-
-        {/* <div className="py-10 px-3 bg-[#f0f0f0] mt-5   rounded-lg shadow-md flex items-center justify-center  ">
-          <h1 className="text-[30px] font-bold text-center uppercase">
-            {dropDown}
-          </h1>
-        </div> */}
 
         <div className="h-[65vh] overflow-auto	">
           {filternosection.map((data) => (
@@ -173,7 +141,7 @@ const Section = () => {
                     height="1em"
                     viewBox="0 0 24 24"
                     className="text-3xl	text-[#e41212]"
-                    onClick={() => handleDeleteModel(data._id)}
+                    onClick={() => handleDeleteModel(data.studentid)}
                   >
                     <path
                       fill="currentColor"

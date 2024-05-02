@@ -21,7 +21,6 @@ const ChatSideBar = () => {
     }, 1000);
   }, []);
 
-  console.log(user);
   const storeId = (id: string) => {
     Cookies.set("chatid", id, { expires: 1 });
   };

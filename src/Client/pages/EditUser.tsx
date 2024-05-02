@@ -37,7 +37,6 @@ const EditUser = () => {
           withCredentials: true,
         })
         .then((res: any) => {
-          //   Cookies.set("status", res.data.status, { expires: 1 });
           setUser(res.data.data);
         });
     } catch {

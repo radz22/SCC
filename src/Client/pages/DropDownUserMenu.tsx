@@ -18,7 +18,7 @@ const DropDownUserMenu: React.FC<userData> = (props) => {
     navigate("/");
     window.location.reload();
   };
-  console.log(props.usersection);
+
   return (
     <div className="bg-white px-5 py-7 rounded-md	">
       <div className="flex items-center gap-7">
@@ -30,7 +30,7 @@ const DropDownUserMenu: React.FC<userData> = (props) => {
             {" "}
             <h1 className="text-black text-2xl	font-semibold ">{props.name}</h1>
           </Link>
-          {props.usersection == "" ? (
+          {props.usersection == "empty" ? (
             <div>
               <h1 className="text-black text-lg	font-semibold">
                 Pending Section...

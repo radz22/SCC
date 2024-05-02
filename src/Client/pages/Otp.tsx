@@ -61,18 +61,17 @@ const Otp = () => {
     const otp = Cookies.get("otpsignup");
     if (getValue == otp) {
       try {
-        const response = await axios.post(
-          "https://sccbackend.onrender.com/UserRoutes/signup",
-          {
+        const response = await axios
+          .post("https://sccbackend.onrender.com/UserRoutes/signup", {
             images: Cookies.get("images"),
             name: Cookies.get("name"),
             email: Cookies.get("email"),
             password: Cookies.get("password"),
-          }
-        );
-        handleDirectLogin();
-        console.log(response.data.msg);
-        deleteInfo();
+          })
+          .then(() => {
+            handleDirectLogin();
+            deleteInfo();
+          });
       } catch {
         console.log("user existing");
       }
@@ -90,6 +89,10 @@ const Otp = () => {
           password: Cookies.get("password"),
         }
       );
+      Cookies.set("userid", response.data.userid, { expires: 1 });
+      Cookies.set("email", response.data.email, { expires: 1 });
+      Cookies.set("usertype", response.data.usertype, { expires: 1 });
+
       if (response.data.status == "Sucess Login") {
         Cookies.set("status", "true", { expires: 1 });
         Cookies.set("token", response.data.token, { expires: 1 });

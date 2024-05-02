@@ -38,7 +38,6 @@ const UserData = () => {
   };
 
   const status = Cookies.get("status");
-  console.log(user);
   return (
     <div>
       {status == "true" ? (
