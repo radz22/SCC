@@ -16,44 +16,48 @@ const Fillup = () => {
   const [gradeLevel, setGradeLevel] = useState<string>("");
   const [schoolYear, setSchoolYear] = useState<string>("");
   const [type, setType] = useState<string>("");
-
+  const userid = Cookies.get("userid");
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setType(event.target.value);
   };
 
   const handleCreate = async () => {
-    try {
-      await axios
-        .post("https://sccbackend.onrender.com/studentform", {
-          studentid: Cookies.get("userid"),
-          firstname: firstName,
-          lastname: lastName,
-          middlename: middleName,
-          lrn: lrn,
-          idstudent: idStudent,
-          course: course,
-          gradelevel: gradeLevel,
-          schoolyear: schoolYear,
-          type: type,
-        })
+    if (userid == null) {
+      toast.error("pls login");
+    } else {
+      try {
+        await axios
+          .post("https://sccbackend.onrender.com/studentform", {
+            studentid: Cookies.get("userid"),
+            firstname: firstName,
+            lastname: lastName,
+            middlename: middleName,
+            lrn: lrn,
+            idstudent: idStudent,
+            course: course,
+            gradelevel: gradeLevel,
+            schoolyear: schoolYear,
+            type: type,
+          })
 
-        .then(() => {
-          toast.success("sucess");
-          setFirstName("");
-          setLastName("");
-          setMiddleName("");
-          setLrn("");
-          setIdStudent("");
-          setCourse("");
-          setGradeLevel("");
-          setSchoolYear("");
-          setType("");
-        })
-        .catch(() => {
-          toast.error("1 account per fill up");
-        });
-    } catch {
-      toast.error("error");
+          .then(() => {
+            toast.success("sucess");
+            setFirstName("");
+            setLastName("");
+            setMiddleName("");
+            setLrn("");
+            setIdStudent("");
+            setCourse("");
+            setGradeLevel("");
+            setSchoolYear("");
+            setType("");
+          })
+          .catch(() => {
+            toast.error("1 account per fill up");
+          });
+      } catch {
+        toast.error("error");
+      }
     }
   };
 
@@ -86,7 +90,9 @@ const Fillup = () => {
         <div className="w-full flex items-center justify-center flex-col  ">
           <div className="bg-[#f7f7f7]  round-md shadow-md py-[70px] ">
             <div className="flex justify-center">
-              <img className="w-[100px]" src={logo} alt="" />
+              <Link to="/">
+                <img className="w-[100px]" src={logo} alt="" />
+              </Link>
 
               <h1 className=" text-[30px] font-bold text-gray-800 mt-6">
                 Student Application Form
