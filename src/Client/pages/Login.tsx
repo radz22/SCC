@@ -55,7 +55,10 @@ const Login = () => {
       <div className="w-2/5	mt-10  ">
         <div className="flex items-center justify-center flex-col">
           <div>
-            <img src={logoscc} className="w-[100px]" />
+            <Link to="/">
+              {" "}
+              <img src={logoscc} className="w-[100px]" />
+            </Link>
           </div>
           <div className="mt-4">
             <h1 className="text-[#CA0000] text-2xl		font-bold uppercase">
