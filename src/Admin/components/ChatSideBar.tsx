@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 
 const ChatSideBar = () => {
   const [search, setSearch] = useState<string>("");
-
+  const [id, setId] = useState<string>("");
   const [user, setUser] = useState<any[]>([]);
   const fetchData = async () => {
     await axios
@@ -23,9 +23,10 @@ const ChatSideBar = () => {
 
   const storeId = (id: string) => {
     Cookies.set("chatid", id, { expires: 1 });
+    setId(id);
   };
   return (
-    <div className="w-full h-screen overflow-auto bg-[#d7d7d7] px-3 py-5 ">
+    <div className="w-full h-screen bg-[#d7d7d7] px-3 py-5 ">
       <div className="mb-10 ">
         <Link to="/dashboard">
           <div>
@@ -57,7 +58,7 @@ const ChatSideBar = () => {
           className="w-full bg-[#ebe9e9] border-2 border-[#f3f2f2] rounded-lg  px-3 py-3 text-base cursor-pointer transition outline-none font-semibold hover:border-[black] hover:bg-[#fff] "
         />
       </div>
-      <div className="mt-4">
+      <div className="mt-4 h-[81vh] overflow-auto">
         {user
           .filter(
             (item) =>
@@ -65,14 +66,22 @@ const ChatSideBar = () => {
               item.name.toLowerCase().includes(search.toLowerCase())
           )
           .map((item) => (
-            <div className="flex items-center gap-4 py-2">
+            <div
+              onClick={() => storeId(item._id)}
+              className={`flex items-center gap-4 py-2 mt-4 cursor-pointer	${
+                item._id == id
+                  ? `bg-[#2d7594] w-auto px-2 py-2 rounded-md	 `
+                  : ``
+              }`}
+            >
               <div>
                 <img src={item.images} className="w-12	h-12	rounded-full" />
               </div>
               <div>
                 <h1
-                  className="text-[#2d7594] font-semibold text-base cursor-pointer	"
-                  onClick={() => storeId(item._id)}
+                  className={`${
+                    item._id == id ? "text-white" : "text-[#2d7594]"
+                  } font-semibold text-base cursor-pointer	`}
                 >
                   {item.name}
                 </h1>

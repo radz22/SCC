@@ -14,7 +14,9 @@ interface userData {
 const EditUser = () => {
   const [base64Image, setBase64Image] = useState<string>("");
   const [user, setUser] = useState<userData | null>();
-  const [displayName, setDisplayName] = useState<string>("");
+  const cookies = Cookies.get("displayname");
+  const [displayName, setDisplayName] = useState<any>(cookies);
+
   const handleFileInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -30,19 +32,6 @@ const EditUser = () => {
     }
   };
 
-  const fetchData = async () => {
-    try {
-      await axios
-        .get("https://sccbackend.onrender.com/auth/user", {
-          withCredentials: true,
-        })
-        .then((res: any) => {
-          setUser(res.data.data);
-        });
-    } catch {
-      console.log("waiting");
-    }
-  };
   const token = Cookies.get("token");
   const fetchUser = async () => {
     try {
@@ -52,6 +41,8 @@ const EditUser = () => {
         })
         .then((res: any) => {
           setUser(res.data.data);
+          const response: userData = res.data.data;
+          Cookies.set("displayname", response.name);
         });
     } catch {
       console.log("waiting");
@@ -59,7 +50,6 @@ const EditUser = () => {
   };
   useEffect(() => {
     setInterval(() => {
-      fetchData();
       fetchUser();
     }, 1000);
   }, []);
@@ -77,6 +67,10 @@ const EditUser = () => {
       .catch(() => {
         toast.error("no user exist");
       });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDisplayName(e.target.value);
   };
 
   return (
@@ -116,7 +110,7 @@ const EditUser = () => {
               type="text"
               placeholder="Display Name"
               value={displayName}
-              onChange={(e) => setDisplayName(e.target.value)}
+              onChange={handleChange}
             />
           </div>
           <div className="text-center mt-5">
