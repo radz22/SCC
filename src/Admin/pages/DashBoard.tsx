@@ -98,15 +98,19 @@ const DashBoard = () => {
 
   return (
     <div>
-      <div className="flex gap-7">
-        <div className="w-3/12		">
+      <div className="flex gap-7 max-lg:gap-4">
+        <div className="w-3/12			max-lg:w-1/5	">
           <SideBar />
         </div>
-        <div className="w-9/12			px-5">
+        <div className="w-9/12	 	max-lg:w-4/5		max-lg:px-2 px-5">
           <div className="py-10 px-3 bg-[#f0f0f0] mt-10   rounded-lg shadow-md flex items-center justify-evenly ">
             <div>
-              <h1 className="text-2xl	 font-bold gap-20">Student List</h1>
-              <h1 className="text-2xl	 font-bold gap-20">with Section</h1>
+              <h1 className="text-2xl	 font-bold gap-20 max-xl:text-xl  max-lg:text-lg">
+                Student List
+              </h1>
+              <h1 className="text-2xl	 font-bold gap-20 max-xl:text-xl max-lg:text-lg">
+                with Section
+              </h1>
             </div>
             <div className="flex items-center justify-center">
               <div>
@@ -120,7 +124,7 @@ const DashBoard = () => {
             </div>
             <div className="mt-2">
               <select
-                className="w-fit py-4 px-4	text-center text-lg	 rounded-md	 font-semibold cursor-pointer	"
+                className="w-fit py-4 px-4	text-center text-lg	 rounded-md	 font-semibold cursor-pointer max-xl:text-base	"
                 value={selectedOption || ""}
                 onChange={handleSelectChange}
               >
@@ -128,20 +132,20 @@ const DashBoard = () => {
 
                 {allSection.map((option, index) => (
                   <option key={index} value={option}>
-                    {option}
+                    <h1 className="max-xl:text-base">{option}</h1>
                   </option>
                 ))}
               </select>
             </div>
           </div>
 
-          <div className="py-10 px-3 bg-[#f0f0f0] mt-5   rounded-lg shadow-md flex items-center justify-center  ">
-            <h1 className="text-[30px] font-bold text-center uppercase">
+          <div className="py-10 px-3 bg-[#f0f0f0] mt-5   rounded-lg shadow-md flex items-center justify-center ">
+            <h1 className="ttext-3xl	 font-bold text-center uppercase max-lg:text-2xl	">
               {selectedOption}
             </h1>
           </div>
 
-          <div className="h-[65vh] overflow-auto	">
+          <div className="max-[1440px]:h-[60vh]	2xl:h-[65vh] max-[1280px]:h-[55vh]	 overflow-auto	">
             {filternosection
               .filter(
                 (item) =>

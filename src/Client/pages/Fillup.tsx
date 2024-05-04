@@ -50,7 +50,7 @@ const Fillup = () => {
           setType("");
         })
         .catch(() => {
-          toast.error("invalid ");
+          toast.error("1 account per fill up");
         });
     } catch {
       toast.error("error");
