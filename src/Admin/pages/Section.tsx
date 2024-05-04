@@ -62,7 +62,7 @@ const Section = () => {
     axios
       .post("https://sccbackend.onrender.com/studentform/studentsection", {
         id: Cookies.get("ID"),
-        section: inputEdit,
+        section: inputEdit.toUpperCase(),
       })
       .then(() => {
         console.log("sucess");
