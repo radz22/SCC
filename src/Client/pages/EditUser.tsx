@@ -16,7 +16,6 @@ const EditUser = () => {
   const [user, setUser] = useState<userData | null>();
   const cookies = Cookies.get("displayname");
   const [displayName, setDisplayName] = useState<any>(cookies);
-
   const handleFileInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -80,7 +79,6 @@ const EditUser = () => {
       })
       .then(() => {
         toast.success("sucess");
-        window.location.reload();
       })
       .catch(() => {
         toast.error("no user exist");
