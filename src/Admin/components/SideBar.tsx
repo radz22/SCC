@@ -56,6 +56,7 @@ const SideBar = () => {
     Cookies.remove("token");
     Cookies.remove("usertype");
     Cookies.remove("chatid");
+    Cookies.remove("login");
 
     navigate("/");
     window.location.reload();

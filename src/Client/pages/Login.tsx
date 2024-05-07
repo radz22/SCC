@@ -6,6 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
+
 const Login = () => {
   const [viewPassword, setViewPassword] = useState(false);
   const [email, setEmail] = useState<string>("");
@@ -16,8 +19,22 @@ const Login = () => {
     setViewPassword(!viewPassword);
   };
 
-  const handleGoogle = () => {
-    window.open("https://sccbackend.onrender.com/auth/google", "_self");
+  const handleFetch = (decode: any) => {
+    axios
+      .post(`http://localhost:4000/UserRoutes/googlefindUser`, {
+        email: decode?.email,
+        name: decode?.name,
+        images: decode?.picture,
+      })
+      .then((res) => {
+        console.log(res.data);
+        Cookies.set("userid", res.data.userid, { expires: 1 });
+        Cookies.set("login", "google", { expires: 1 });
+        Cookies.set("email", res.data.email, { expires: 1 });
+        Cookies.set("usertype", res.data.usertype, { expires: 1 });
+        Cookies.set("status", "true", { expires: 1 });
+        navigate("/");
+      });
   };
 
   const handleLogin = async () => {
@@ -32,7 +49,6 @@ const Login = () => {
       Cookies.set("userid", response.data.userid, { expires: 1 });
       Cookies.set("email", response.data.email, { expires: 1 });
       Cookies.set("usertype", response.data.usertype, { expires: 1 });
-
       toast.success("sucess");
       if (response.data.usertype == "admin") {
         navigate("/dashboard");
@@ -136,11 +152,8 @@ const Login = () => {
         <div className="mt-1">
           <p className="text-center">or</p>
         </div>
-        <div
-          className="mt-2 px-7 m-2 py-3 bg-white drop-shadow-md rounded-[5px] border-gray-200 hover:bg-slate-200 hover:border-gray-200 w-fit cursor-pointer	"
-          onClick={handleGoogle}
-        >
-          <svg
+        <div className="w-[20%]">
+          {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             width="1em"
             height="1em"
@@ -168,7 +181,17 @@ const Login = () => {
               fill="#319f43"
               d="M8.75 92.4q10.37-8 20.73-16.08A39.3 39.3 0 0 0 44 95.74a37.2 37.2 0 0 0 14.08 6.08a41.3 41.3 0 0 0 15.1 0a36.2 36.2 0 0 0 13.93-5.5c6.69 5.22 13.41 10.4 20.1 15.62a57.13 57.13 0 0 1-25.9 13.47a67.6 67.6 0 0 1-32.36-.35a63 63 0 0 1-23-11.59A63.7 63.7 0 0 1 8.75 92.4"
             />
-          </svg>
+          </svg> */}
+          <GoogleLogin
+            onSuccess={(credentialResponse: any) => {
+              const decode = jwtDecode(credentialResponse.credential);
+              handleFetch(decode);
+            }}
+            onError={() => {
+              console.log("Login Failed");
+            }}
+          />
+          ;
         </div>
 
         <div className="mt-10 flex items-center justify-center w-full">

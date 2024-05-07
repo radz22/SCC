@@ -15,7 +15,7 @@ interface userData {
 const UserData = () => {
   const [dropDown, setDropDown] = useState(false);
   const [user, setUser] = useState<userData | null>();
-
+  const [google, setGoogle] = useState<userData | null>();
   const fetchData = async () => {
     await axios
       .post("https://sccbackend.onrender.com/UserRoutes/userdata", {
@@ -26,11 +26,22 @@ const UserData = () => {
       });
   };
 
+  const fetchgoogledata = async () => {
+    await axios
+      .post("http://localhost:4000/UserRoutes/googledata", {
+        email: Cookies.get("email"),
+      })
+      .then((res) => {
+        setGoogle(res.data.data);
+      });
+  };
+
   const token = Cookies.get("token");
 
   useEffect(() => {
     setInterval(() => {
       fetchData();
+      fetchgoogledata();
     }, 1000);
   }, []);
   const handleDropDown = () => {
@@ -44,7 +55,10 @@ const UserData = () => {
         <div>
           <div className="flex justify-center items-center gap-2 relative">
             <div>
-              <img src={user?.images} className="rounded-full w-14	h-14	" />
+              <img
+                src={user?.images || google?.images}
+                className="rounded-full w-14	h-14	"
+              />
             </div>
             <div>
               <div onClick={handleDropDown}>
@@ -93,9 +107,9 @@ const UserData = () => {
           <div className="z-1 absolute right-5 w-[450px]		mt-5">
             {dropDown && (
               <DropDownUserMenu
-                images={user?.images}
-                name={user?.name}
-                usersection={user?.section}
+                images={user?.images || google?.images}
+                name={user?.name || google?.name}
+                usersection={user?.section || google?.section}
               />
             )}
           </div>

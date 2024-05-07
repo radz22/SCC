@@ -17,6 +17,8 @@ const Sidebar: React.FC<userData> = (props) => {
     Cookies.remove("userid");
     Cookies.remove("email");
     Cookies.remove("usertype");
+    Cookies.remove("login");
+    Cookies.remove("displayname");
     navigate("/");
     window.location.reload();
   };
@@ -32,6 +34,7 @@ const Sidebar: React.FC<userData> = (props) => {
         Cookies.remove("token");
         Cookies.remove("userid");
         Cookies.remove("email");
+
         navigate("/");
         window.location.reload();
       })

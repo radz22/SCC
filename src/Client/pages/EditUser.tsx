@@ -33,19 +33,36 @@ const EditUser = () => {
   };
 
   const token = Cookies.get("token");
+  const login = Cookies.get("login");
   const fetchUser = async () => {
-    try {
-      await axios
-        .post("https://sccbackend.onrender.com/UserRoutes/userdata", {
-          token: token,
-        })
-        .then((res: any) => {
-          setUser(res.data.data);
-          const response: userData = res.data.data;
-          Cookies.set("displayname", response.name);
-        });
-    } catch {
-      console.log("waiting");
+    if (login == "google") {
+      try {
+        await axios
+          .post("http://localhost:4000/UserRoutes/googledata", {
+            email: Cookies.get("email"),
+          })
+          .then((res: any) => {
+            setUser(res.data.data);
+            const response: userData = res.data.data;
+            Cookies.set("displayname", response.name);
+          });
+      } catch {
+        console.log("waiting");
+      }
+    } else {
+      try {
+        await axios
+          .post("https://sccbackend.onrender.com/UserRoutes/userdata", {
+            token: token,
+          })
+          .then((res: any) => {
+            setUser(res.data.data);
+            const response: userData = res.data.data;
+            Cookies.set("displayname", response.name);
+          });
+      } catch {
+        console.log("waiting");
+      }
     }
   };
   useEffect(() => {
@@ -63,6 +80,7 @@ const EditUser = () => {
       })
       .then(() => {
         toast.success("sucess");
+        window.location.reload();
       })
       .catch(() => {
         toast.error("no user exist");
