@@ -37,7 +37,7 @@ const EditUser = () => {
     if (login == "google") {
       try {
         await axios
-          .post("http://localhost:4000/UserRoutes/googledata", {
+          .post("https://sccbackend.onrender.com/UserRoutes/googledata", {
             email: Cookies.get("email"),
           })
           .then((res: any) => {
