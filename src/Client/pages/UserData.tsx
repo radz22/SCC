@@ -28,7 +28,7 @@ const UserData = () => {
 
   const fetchgoogledata = async () => {
     await axios
-      .post("http://localhost:4000/UserRoutes/googledata", {
+      .post("https://sccbackend.onrender.com/UserRoutes/googledata", {
         email: Cookies.get("email"),
       })
       .then((res) => {

@@ -21,7 +21,7 @@ const Login = () => {
 
   const handleFetch = (decode: any) => {
     axios
-      .post(`http://localhost:4000/UserRoutes/googlefindUser`, {
+      .post(`https://sccbackend.onrender.com/UserRoutes/googlefindUser`, {
         email: decode?.email,
         name: decode?.name,
         images: decode?.picture,
