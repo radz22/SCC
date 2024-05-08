@@ -73,15 +73,15 @@ const Profile = () => {
   const handleEdit = () => {
     axios.post("https://sccbackend.onrender.com/studentform/editProfile", {
       id: Cookies.get("userid"),
-      firstname: firstName,
-      lastname: lastName,
-      middlename: middleName,
-      lrn: lrn,
-      idstudent: idStudent,
-      course: course,
-      gradelevel: gradeLevel,
-      schoolyear: schoolYear,
-      type: type,
+      firstname: firstName.toUpperCase(),
+      lastname: lastName.toUpperCase(),
+      middlename: middleName.toUpperCase(),
+      lrn: lrn.toUpperCase(),
+      idstudent: idStudent.toUpperCase(),
+      course: course.toUpperCase(),
+      gradelevel: gradeLevel.toUpperCase(),
+      schoolyear: schoolYear.toUpperCase(),
+      type: type.toUpperCase(),
     });
   };
   return (

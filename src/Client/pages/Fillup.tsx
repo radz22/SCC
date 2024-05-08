@@ -111,7 +111,7 @@ const Fillup = () => {
                   <input
                     type="text"
                     value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
+                    onChange={(e) => setFirstName(e.target.value.toUpperCase())}
                     placeholder="Enter First Name"
                     className="rounded-sm  py-2 px-3 w-[300px] outline-none shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset]"
                   />
@@ -127,7 +127,7 @@ const Fillup = () => {
                   <input
                     type="text"
                     value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                    onChange={(e) => setLastName(e.target.value.toUpperCase())}
                     placeholder="Enter Last Name"
                     className="rounded-sm  py-2 px-3 w-[300px] outline-none shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset]"
                   />
@@ -142,7 +142,9 @@ const Fillup = () => {
                   <input
                     type="text"
                     value={middleName}
-                    onChange={(e) => setMiddleName(e.target.value)}
+                    onChange={(e) =>
+                      setMiddleName(e.target.value.toUpperCase())
+                    }
                     placeholder="Enter Middle Name"
                     className="rounded-sm  py-2 px-3 w-[200px] outline-none shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset]"
                   />
@@ -164,7 +166,7 @@ const Fillup = () => {
                     type="text"
                     placeholder="5029XXXXX"
                     value={lrn}
-                    onChange={(e) => setLrn(e.target.value)}
+                    onChange={(e) => setLrn(e.target.value.toUpperCase())}
                     className="rounded-sm  py-2 px-3 w-[300px] outline-none mt-2 shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset]"
                   />
                   <div className="mt-2">
@@ -181,7 +183,7 @@ const Fillup = () => {
                   <input
                     type="text"
                     value={idStudent}
-                    onChange={(e) => setIdStudent(e.target.value)}
+                    onChange={(e) => setIdStudent(e.target.value.toUpperCase())}
                     placeholder="09622XXX"
                     className="rounded-sm  py-2 px-3 w-[200px] outline-none  mt-2 shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset]"
                   />
@@ -200,7 +202,7 @@ const Fillup = () => {
                     type="text"
                     placeholder="Enter Your Course"
                     value={course}
-                    onChange={(e) => setCourse(e.target.value)}
+                    onChange={(e) => setCourse(e.target.value.toUpperCase())}
                     className="rounded-sm  py-2 px-3 w-[300px] outline-none  mt-2 shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset]"
                   />
                   <div className="mt-2">
@@ -223,7 +225,9 @@ const Fillup = () => {
                   <input
                     type="text"
                     value={gradeLevel}
-                    onChange={(e) => setGradeLevel(e.target.value)}
+                    onChange={(e) =>
+                      setGradeLevel(e.target.value.toUpperCase())
+                    }
                     placeholder="Enter your Grade Level"
                     className="rounded-sm  py-2 px-3 w-[300px] outline-none mt-2 shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset]"
                   />
@@ -241,7 +245,9 @@ const Fillup = () => {
                   <input
                     type="text"
                     value={schoolYear}
-                    onChange={(e) => setSchoolYear(e.target.value)}
+                    onChange={(e) =>
+                      setSchoolYear(e.target.value.toUpperCase())
+                    }
                     placeholder="09622XXX"
                     className="rounded-sm  py-2 px-3 w-[200px] outline-none  mt-2 shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset]"
                   />

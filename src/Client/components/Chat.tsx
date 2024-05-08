@@ -39,6 +39,7 @@ const Chat = () => {
       email: email,
       message: inputMessage,
     });
+    setInputMessage("");
   };
   return (
     <div>

@@ -34,6 +34,7 @@ const Chat = () => {
       email: "admin@gmail.com",
       message: inputMessage,
     });
+    setInputMessage("");
   };
   return (
     <div className=" px-4 w-full">
