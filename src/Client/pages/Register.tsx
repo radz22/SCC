@@ -18,7 +18,7 @@ const Register = () => {
   const handleSignup = async () => {
     try {
       const response = await axios.post(
-        `https://sccbackend.onrender.com/UserRoutes/otp`,
+        `https://sccbackend-lxvu.onrender.com/UserRoutes/otp`,
         {
           email: email,
           name: name,

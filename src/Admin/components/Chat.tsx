@@ -14,7 +14,7 @@ const Chat = () => {
 
   const fetchData = async () => {
     await axios
-      .post("https://sccbackend.onrender.com/messageroutes/findusers", {
+      .post("https://sccbackend-lxvu.onrender.com/messageroutes/findusers", {
         id: Cookies.get("chatid"),
       })
       .then((res) => {
@@ -29,7 +29,7 @@ const Chat = () => {
   }, []);
 
   const sendMessage = () => {
-    axios.post("https://sccbackend.onrender.com/messageroutes/", {
+    axios.post("https://sccbackend-lxvu.onrender.com/messageroutes/", {
       studentid: Cookies.get("chatid"),
       email: "admin@gmail.com",
       message: inputMessage,

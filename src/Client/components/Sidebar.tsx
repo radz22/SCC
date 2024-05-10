@@ -25,7 +25,7 @@ const Sidebar: React.FC<userData> = (props) => {
 
   const handleDelete = () => {
     axios
-      .post(`https://sccbackend.onrender.com/UserRoutes/deleteuser`, {
+      .post(`https://sccbackend-lxvu.onrender.com/UserRoutes/deleteuser`, {
         email: Cookies.get("email"),
       })
       .then(() => {

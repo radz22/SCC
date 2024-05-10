@@ -37,7 +37,7 @@ const EditUser = () => {
     if (login == "google") {
       try {
         await axios
-          .post("https://sccbackend.onrender.com/UserRoutes/googledata", {
+          .post("https://sccbackend-lxvu.onrender.com/UserRoutes/googledata", {
             email: Cookies.get("email"),
           })
           .then((res: any) => {
@@ -51,7 +51,7 @@ const EditUser = () => {
     } else {
       try {
         await axios
-          .post("https://sccbackend.onrender.com/UserRoutes/userdata", {
+          .post("https://sccbackend-lxvu.onrender.com/UserRoutes/userdata", {
             token: token,
           })
           .then((res: any) => {
@@ -72,7 +72,7 @@ const EditUser = () => {
 
   const handleEdit = () => {
     axios
-      .post(`https://sccbackend.onrender.com/UserRoutes/edituser`, {
+      .post(`https://sccbackend-lxvu.onrender.com/UserRoutes/edituser`, {
         id: Cookies.get("userid"),
         images: base64Image,
         name: displayName,

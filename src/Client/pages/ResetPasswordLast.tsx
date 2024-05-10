@@ -25,7 +25,7 @@ const ResetPasswordLast = () => {
   const handleReset = async () => {
     if (verifyingPassword == password) {
       axios
-        .post("https://sccbackend.onrender.com/UserRoutes/resetpassword", {
+        .post("https://sccbackend-lxvu.onrender.com/UserRoutes/resetpassword", {
           email: Cookies.get("otpemail"),
           password: password,
         })

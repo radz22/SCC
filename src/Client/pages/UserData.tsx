@@ -18,7 +18,7 @@ const UserData = () => {
   const [google, setGoogle] = useState<userData | null>();
   const fetchData = async () => {
     await axios
-      .post("https://sccbackend.onrender.com/UserRoutes/userdata", {
+      .post("https://sccbackend-lxvu.onrender.com/UserRoutes/userdata", {
         token: token,
       })
       .then((res) => {
@@ -28,7 +28,7 @@ const UserData = () => {
 
   const fetchgoogledata = async () => {
     await axios
-      .post("https://sccbackend.onrender.com/UserRoutes/googledata", {
+      .post("https://sccbackend-lxvu.onrender.com/UserRoutes/googledata", {
         email: Cookies.get("email"),
       })
       .then((res) => {

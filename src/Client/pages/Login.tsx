@@ -21,7 +21,7 @@ const Login = () => {
 
   const handleFetch = (decode: any) => {
     axios
-      .post(`https://sccbackend.onrender.com/UserRoutes/googlefindUser`, {
+      .post(`https://sccbackend-lxvu.onrender.com/UserRoutes/googlefindUser`, {
         email: decode?.email,
         name: decode?.name,
         images: decode?.picture,
@@ -40,7 +40,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "https://sccbackend.onrender.com/UserRoutes/signin",
+        "https://sccbackend-lxvu.onrender.com/UserRoutes/signin",
         {
           email: email,
           password: password,

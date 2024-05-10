@@ -42,7 +42,7 @@ const Profile = () => {
   const fetchData = async () => {
     try {
       await axios
-        .post("https://sccbackend.onrender.com/studentform/yourprofile", {
+        .post("https://sccbackend-lxvu.onrender.com/studentform/yourprofile", {
           id: Cookies.get("userid"),
         })
         .then((res: any) => {
@@ -71,7 +71,7 @@ const Profile = () => {
   };
 
   const handleEdit = () => {
-    axios.post("https://sccbackend.onrender.com/studentform/editProfile", {
+    axios.post("https://sccbackend-lxvu.onrender.com/studentform/editProfile", {
       id: Cookies.get("userid"),
       firstname: firstName.toUpperCase(),
       lastname: lastName.toUpperCase(),

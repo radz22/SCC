@@ -9,7 +9,7 @@ const ChatSideBar = () => {
   const [user, setUser] = useState<any[]>([]);
   const fetchData = async () => {
     await axios
-      .get("https://sccbackend.onrender.com/UserRoutes")
+      .get("https://sccbackend-lxvu.onrender.com/UserRoutes")
       .then((res) => {
         setUser(res.data);
       });

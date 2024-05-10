@@ -8,7 +8,7 @@ const ResetPassword = () => {
   const navigate = useNavigate();
   const handleOtp = () => {
     axios
-      .post("https://sccbackend.onrender.com/UserRoutes/resetotp", {
+      .post("https://sccbackend-lxvu.onrender.com/UserRoutes/resetotp", {
         email: email,
       })
       .then((response) => {

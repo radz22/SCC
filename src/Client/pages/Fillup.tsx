@@ -27,7 +27,7 @@ const Fillup = () => {
     } else {
       try {
         await axios
-          .post("https://sccbackend.onrender.com/studentform", {
+          .post("https://sccbackend-lxvu.onrender.com/studentform", {
             studentid: Cookies.get("userid"),
             firstname: firstName,
             lastname: lastName,

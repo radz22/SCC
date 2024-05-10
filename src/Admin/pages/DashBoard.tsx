@@ -45,7 +45,7 @@ const DashBoard = () => {
   };
   const handleEdit = async () => {
     axios
-      .post("https://sccbackend.onrender.com/studentform/studentsection", {
+      .post("https://sccbackend-lxvu.onrender.com/studentform/studentsection", {
         id: Cookies.get("ID"),
         section: inputEdit,
       })
@@ -57,7 +57,7 @@ const DashBoard = () => {
 
   const handleDelete = async () => {
     axios
-      .post("https://sccbackend.onrender.com/studentform/studentdelete", {
+      .post("https://sccbackend-lxvu.onrender.com/studentform/studentdelete", {
         id: Cookies.get("ID"),
       })
       .then(() => {
@@ -83,7 +83,7 @@ const DashBoard = () => {
   const fetchData = async () => {
     try {
       await axios
-        .get("https://sccbackend.onrender.com/studentform")
+        .get("https://sccbackend-lxvu.onrender.com/studentform")
         .then((res: any) => {
           setData(res.data);
         });
